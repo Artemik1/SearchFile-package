@@ -3,7 +3,7 @@
 1. [Installation](#Installation)
 2. [Description](#Description)
 3. [Using](#Using)
-4. [Source code](#Source code)
+4. [Code](#Code)
 ## Installation
 Installation using a terminal:
 
@@ -23,7 +23,7 @@ search("C:\\Users")
 search("D:\\Скачанные файлы\\test.txt")
 search("D:\\Git\\cmd")
 ```
-## Source code
+## Code
 ```
 import os
 
