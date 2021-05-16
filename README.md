@@ -4,7 +4,6 @@
 2. [Description](#Description)
 3. [Using](#Using)
 4. [Source code](#Source code)
-
 ## Installation
 Installation using a terminal:
 
