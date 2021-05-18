@@ -17,25 +17,49 @@ or
 
 ```from SearchFile import search```
 
-The argument of the `search` function is the path passed as a string. Also, the directory separator should be written in the form `\\`, so as not to form control characters (\n, \t, \r, etc.). Examples:
+The argument of the `search` function is the path passed as a string.
+#### For Windows
+Also, the directory separator should be written in the form `\\`, so as not to form control characters (\n, \t, \r, etc.). Examples:
 ```
 search("C:\\Users")
-search("D:\\Скачанные файлы\\test.txt")
+search("D:\\Downloads\\test.txt")
 search("D:\\Git\\cmd")
+```
+#### Linux
+The directory separator should be used `/`. Examples:
+```
+search("/home/artem/desktop/")
+search("/home/artem/tmp/file1")
+search("/home/artem/desktop/tmp/")
+```
+#### Mac OS
+The directory separator should be used `/`. Examples:
+```
+search("/Library/Desktop Pictures")
+search("/Library/Desktop Pictures/pictures1.jpg")
+search("/Library/Desktop Pictures/gallery")
 ```
 ## Code
 ```
 import os
+import sys
 
 
 def search(path):
+
+    base = sys.platform
+    sep = "\\"
+
+    if base == "darwin" or "linux":
+        sep = "/"
+
     if os.path.isdir(path):
         try:
             for i in os.listdir(path):
-                if os.path.isdir(path + "\\" + i):
-                    search(path + "\\" + i)
+                if os.path.isdir(path + sep + i):
+                    search(path + sep + i)
                 else:
-                    print("\n", path + "\\" + i)
+                    print("\n", path + sep + i)
         except PermissionError:
             print("\n""Отказано в доступе - " + path)
     else:
