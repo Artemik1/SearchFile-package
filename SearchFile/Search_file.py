@@ -1,26 +1,18 @@
-import os
-import sys
+from os import path, listdir
 
 
-def search(path):
-
-    base = sys.platform
-    sep = "\\"
-
-    if base == "darwin" or "linux":
-        sep = "/"
-
-    if os.path.isdir(path):
+def search(tpath):
+    if path.isdir(tpath):
         try:
-            for i in os.listdir(path):
-                if os.path.isdir(path + sep + i):
-                    search(path + sep + i)
+            for dirs in listdir(tpath):
+                if path.isdir(path.join(tpath, dirs)):
+                    search(path.join(tpath, dirs))
                 else:
-                    print("\n", path + sep + i)
+                    print("\n", path.basename(path.join(tpath, dirs)))
         except PermissionError:
-            print("\n""Отказано в доступе - " + path)
+            print("\n""Отказано в доступе - " + tpath)
     else:
-        if os.path.isfile(path):
-            print(path)
+        if path.isfile(tpath):
+            print(path.basename(tpath))
         else:
             print("Неверно указан путь!")
