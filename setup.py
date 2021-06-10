@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="SearchFile",
-      version="0.2.0",
+      version="0.3.1",
       long_description=long_description,
       long_description_content_type="text/markdown",
       description="Search for files by the specified path.",
